@@ -3,212 +3,325 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aniversarea Noastră</title>
+  <title>Aniversarea Noastră • Boutique</title>
   <style>
-    :root { color-scheme: light; }
-    * { box-sizing: border-box; }
+    :root { color-scheme: light; font-family: "Poppins", Arial, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: Arial, sans-serif;
       background: #fff0f6;
-      margin: 0;
-      padding: 0;
-      color: #333;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 2rem 1rem;
+      color: #333;
     }
-    .login-wrapper,
-    .content-wrapper {
-      width: min(680px, 92vw);
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-      padding: 2.5rem;
+    .login-wrapper, .content-wrapper {
+      width: min(960px, 95vw);
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+      overflow: hidden;
     }
-    .login-wrapper h2 {
-      margin-top: 0;
-      text-align: center;
-      color: #d6336c;
-    }
-    label {
-      display: block;
-      margin-bottom: 0.4rem;
-      font-weight: 600;
-    }
+    .login-wrapper { max-width: 480px; padding: 2.5rem; }
+    .login-wrapper h2 { text-align: center; color: #c9184a; margin-bottom: 1.5rem; }
+    label { font-weight: 600; display: block; margin-bottom: 0.35rem; }
     input {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      border-radius: 10px;
-      border: 1px solid rgba(0, 0, 0, 0.15);
-      margin-bottom: 1rem;
-      font-size: 1rem;
+      width: 100%; padding: 0.85rem 1rem; border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.15); margin-bottom: 1rem; font-size: 1rem;
     }
     button {
-      width: 100%;
-      padding: 0.95rem 1rem;
-      border: none;
-      border-radius: 10px;
-      background: #ff4d6d;
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease;
+      width: 100%; padding: 1rem; border: none; border-radius: 12px;
+      background: linear-gradient(120deg,#ff4d6d,#f72585);
+      color: #fff; font-size: 1rem; font-weight: 600; cursor: pointer;
+      transition: opacity 0.2s ease;
     }
-    button:hover { background: #e63956; }
-    .error {
-      color: #d00000;
-      margin-top: -0.5rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      min-height: 1.4rem;
-    }
+    button:hover { opacity: 0.9; }
+    .error { color: #d00000; min-height: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
     header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #ffb3c6;
-      color: #fff;
-      border-radius: 16px 16px 0 0;
+      background: radial-gradient(circle at top,#ff8fa3,#ff4d6d);
+      color: #fff; text-align: center; padding: 3rem 2rem 4rem;
     }
-    h1 { margin: 0; font-size: 2.5rem; }
-    section { padding: 2rem 1rem; }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
+    header h1 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 0.75rem; }
+    header p { font-size: 1.15rem; opacity: 0.9; }
+    .content-wrapper section { padding: 2.5rem clamp(1.5rem, 5vw, 3rem); }
+    .section-title { font-size: 1.8rem; margin-bottom: 1.5rem; color: #c9184a; }
+    .highlight { color: #ff4d6d; font-weight: 600; }
+    .collections {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
     }
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    .collection-card {
+      background: #ffe3ec; padding: 1.5rem; border-radius: 18px;
+      display: flex; flex-direction: column; gap: 0.6rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     }
-    .letter {
-      max-width: 700px;
-      margin: 0 auto;
-      background: #ffffff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      line-height: 1.6;
-      font-size: 1.1rem;
+    .collection-card span { font-size: 0.9rem; letter-spacing: 0.08em; color: #8a2846; }
+    .collection-card h3 { margin: 0; color: #590d22; }
+    .collection-card p { flex: 1; color: #6a1b3f; }
+    .collection-card button {
+      margin-top: 0.5rem; background: #ff4d6d; border: none; border-radius: 999px;
+      padding: 0.7rem 1.2rem; font-size: 0.95rem; width: fit-content;
     }
-    .counter-card,
-    .love-message {
-      margin: 1.5rem auto;
-      padding: 1.5rem;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-      background: #ffe3ec;
-      text-align: center;
-      max-width: 520px;
+    .products-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
     }
-    .counter-card h3,
-    .love-message h3 {
-      margin-top: 0;
-      color: #c9184a;
-      letter-spacing: 0.05em;
+    .product-card {
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 20px;
+      padding: 1.25rem;
+      background: #fff;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .product-card img {
+      width: 100%; border-radius: 16px; aspect-ratio: 4/3;
+      object-fit: cover; background: #ffd6e0;
+    }
+    .product-card button {
+      background: linear-gradient(120deg,#f72585,#7209b7);
+      border-radius: 12px; padding: 0.8rem;
+    }
+    .time-counter,
+    .love-message,
+    .newsletter,
+    .testimonials {
+      background: #fff6fb; border-radius: 20px; padding: 2rem;
+      box-shadow: inset 0 0 0 1px rgba(255,77,109,0.2);
+      margin-bottom: 2rem;
     }
     .counter-values {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #8a2846;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-top: 0.5rem;
+      display: flex; flex-wrap: wrap; gap: 0.8rem;
+      justify-content: center; margin-top: 1rem;
     }
-    .counter-values span {
-      background: #fff;
-      padding: 0.65rem 1rem;
-      border-radius: 999px;
-      min-width: 120px;
+    .counter-pill {
+      background: #fff; border-radius: 999px; padding: 0.8rem 1.4rem;
+      font-weight: 600; color: #8a2846; min-width: 120px; text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     }
-    .love-message p {
-      margin: 0.6rem 0;
-      font-size: 1.05rem;
+    .message-text { font-size: 1.1rem; line-height: 1.8; color: #5c1a33; }
+    .newsletter form {
+      display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem;
     }
-    @media (max-width: 600px) {
-      .login-wrapper,
-      .content-wrapper { padding: 1.75rem; }
-      h1 { font-size: 2rem; }
-      .counter-values { flex-direction: column; }
-      .counter-values span { width: 100%; }
+    .newsletter input {
+      flex: 1; min-width: 220px; border-radius: 999px; border: none;
+      padding: 0.9rem 1.2rem; background: #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    .newsletter button {
+      padding: 0.9rem 1.2rem; border-radius: 999px;
+      background: linear-gradient(120deg,#ffb703,#fb8500);
+    }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 1rem;
+    }
+    .testimonial-card {
+      background: #fff; border-radius: 16px; padding: 1.2rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+      font-size: 0.95rem; line-height: 1.5;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: "“"; font-size: 2.5rem; color: #ffa6c1;
+      position: absolute; top: -10px; left: 15px; opacity: 0.5;
+    }
+    .popup-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem; z-index: 1000;
+    }
+    .popup-card {
+      background: #fff; border-radius: 18px; padding: 2rem;
+      max-width: 420px; text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: pop 0.25s ease;
+    }
+    .popup-card h3 { margin-bottom: 0.75rem; color: #c9184a; font-size: 1.4rem; }
+    .popup-card p { margin-bottom: 1.5rem; line-height: 1.6; color: #5c1a33; }
+    .popup-card button { width: auto; padding: 0.7rem 1.8rem; }
+    @keyframes pop {
+      from { transform: translateY(15px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @media (max-width: 680px) {
+      body { padding: 1rem 0.5rem; }
+      header { padding: 2.5rem 1.2rem 3rem; }
+      .collections, .products-grid { grid-template-columns: 1fr; }
+      .newsletter form { flex-direction: column; }
     }
   </style>
 </head>
 <body>
   <div class="login-wrapper" id="login">
-    <h2>Bine ai venit ❤️</h2>
+    <h2>Bine ai venit la Boutique-ul nostru ❤️</h2>
     <form id="loginForm">
       <label for="email">Email</label>
       <input type="email" id="email" autocomplete="email" required placeholder="ex: 2ani4luni@aniversare.ro" />
       <label for="password">Parola</label>
       <input type="password" id="password" autocomplete="current-password" required placeholder="Parola secretă" />
       <div class="error" id="errorMsg"></div>
-      <button type="submit">Intră pe pagina noastră</button>
+      <button type="submit">Intră în magazinul nostru</button>
     </form>
   </div>
 
   <div class="content-wrapper" id="content" hidden>
     <header>
       <h1>La mulți ani, iubirea mea! ❤️</h1>
+      <p>Un mic boutique imaginar creat doar pentru noi doi.</p>
     </header>
 
-    <section id="contor">
-      <div class="counter-card">
-        <h3>⏳ Timpul nostru împreună</h3>
-        <p>Din 15 iulie 2023 până acum:</p>
+    <section id="collections">
+      <h2 class="section-title">Colecții speciale</h2>
+      <div class="collections">
+        <article class="collection-card">
+          <span>COLECȚIA 01</span>
+          <h3>Zile memorabile</h3>
+          <p>Calendar cu toate zilele în care ne-am surprins unul pe altul cu un zâmbet nou.</p>
+          <button>Vezi detalii</button>
+        </article>
+        <article class="collection-card">
+          <span>COLECȚIA 02</span>
+          <h3>Cadouri simbolice</h3>
+          <p>Micile obiecte care păstrează în ele povești lungi de iubire.</p>
+          <button>Vezi detalii</button>
+        </article>
+        <article class="collection-card">
+          <span>COLECȚIA 03</span>
+          <h3>Momente dulci</h3>
+          <p>Rețete și deserturi inventate în bucătăria noastră, cu ingrediente secrete.</p>
+          <button>Vezi detalii</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="counter">
+      <div class="time-counter">
+        <h2 class="section-title">⏳ Cronometrul iubirii</h2>
+        <p>Din <span class="highlight">15 iulie 2023</span> până astăzi am adunat:</p>
         <div class="counter-values">
-          <span id="years">0 ani</span>
-          <span id="months">0 luni</span>
-          <span id="days">0 zile</span>
+          <div class="counter-pill" id="years">0 ani</div>
+          <div class="counter-pill" id="months">0 luni</div>
+          <div class="counter-pill" id="days">0 zile</div>
         </div>
       </div>
     </section>
 
-    <section id="mesaj">
-      <div class="love-message">
-        <h3>💗 Mesaj din inimă</h3>
-        <p>Ești începutul și sfârșitul fiecărei zile frumoase pentru mine.</p>
-        <p>Îți promit să păstrez mereu zâmbetele tale în siguranță și să te țin de mână în fiecare pas.</p>
-        <p>Cu tine, viitorul are deja gustul perfect: iubire, curaj și infinit.</p>
+    <section id="products">
+      <h2 class="section-title">Recomandările inimii</h2>
+      <div class="products-grid">
+        <article class="product-card">
+          <img src="poza1.jpg" alt="Noi doi, mereu împreună" />
+          <h4>Scrisoare sigilată cu săruturi</h4>
+          <p>Vezi fotografia noastră preferată, apoi apăsă pe buton ca să citești mesajul ascuns în inimă.</p>
+          <button class="show-message"
+                  data-message="Te iubesc pentru felul în care îmi luminezi zilele, pentru liniștea pe care o simt în brațele tale și pentru promisiunea că orice ar fi, rămânem unul lângă celălalt.">
+            Deschide mesajul
+          </button>
+        </article>
+
+        <article class="product-card">
+          <img src="poza2.jpg" alt="Cina noastră preferată" />
+          <h4>Set de seri liniștite</h4>
+          <p>Am strâns aici toate cinele în doi, cu râsete, glume și promisiuni șoptite la lumina felinarelor.</p>
+          <button class="show-message"
+                  data-message="Oriunde am fi, e acasă doar când ești tu lângă mine. Mulțumesc pentru fiecare seară în care mă privești și mă faci să uit de lume.">
+            Citește mesajul
+          </button>
+        </article>
+
+        <article class="product-card">
+          <img src="poza3.jpg" alt="Aventură în doi" />
+          <h4>Voucher pentru visuri</h4>
+          <p>Surprizele de iarnă, plimbările prin ninsoare și planurile mari țesute la căldură.</p>
+          <button class="show-message"
+                  data-message="Ești partenerul meu de aventură preferat. Chiar și când ninge peste noi, dragostea noastră e cel mai cald loc de pe Pământ.">
+            Descoperă mesajul
+          </button>
+        </article>
       </div>
     </section>
 
-    <section id="poze">
-      <h2>📸 Amintirile Noastre</h2>
-      <div class="gallery">
-        <img src="poza1.jpg" alt="Noi 1" />
-        <img src="poza2.jpg" alt="Noi 2" />
-        <img src="poza3.jpg" alt="Noi 3" />
+    <section id="love-message">
+      <div class="love-message">
+        <h2 class="section-title">💗 Mesaj special</h2>
+        <p class="message-text">
+          „Cu tine, orice zi obișnuită devine un raft plin de surprize.
+          Îți mulțumesc că ești povestea mea preferată, cumpărată la prima vedere
+          și iubită pentru totdeauna.”
+        </p>
       </div>
     </section>
 
     <section id="scrisoare">
-      <h2>💌 Scrisoare pentru tine</h2>
-      <div class="letter">
-        <p>Iubirea mea,</p>
-        <p>Astăzi sărbătorim nu doar timpul petrecut împreună, ci tot ce am construit, toate momentele în care am râs, am visat și ne-am susținut reciproc. Ești cea mai frumoasă parte din viața mea și îți mulțumesc că îmi faci fiecare zi mai luminoasă.</p>
-        <p>Te iubesc mai mult decât pot spune în cuvinte și abia aștept tot ce urmează pentru noi.</p>
-        <p>Cu drag,<br>Eu ❤️</p>
+      <h2 class="section-title">💌 Scrisori de dragoste</h2>
+      <div class="collections">
+        <article class="collection-card">
+          <span>SCRISOAREA 01</span>
+          <h3>Când te privesc</h3>
+          <p>Iubirea mea, fiecare privire către tine e o confirmare că am ales cel mai frumos destin. În ochii tăi găsesc răspunsul la toate întrebările mele.</p>
+        </article>
+        <article class="collection-card">
+          <span>SCRISOAREA 02</span>
+          <h3>Când îți aud vocea</h3>
+          <p>Glasul tău are puterea de a-mi calma orice furtună. Fiecare „bună dimineața” rostit de tine e începutul unei povești perfecte.</p>
+        </article>
+        <article class="collection-card">
+          <span>SCRISOAREA 03</span>
+          <h3>Când suntem departe</h3>
+          <p>Chiar și când distantele ne joacă feste, gândul meu rămâne lipit de tine. Te simt aproape cu fiecare respirație.</p>
+        </article>
+        <article class="collection-card">
+          <span>SCRISOAREA 04</span>
+          <h3>Când visăm împreună</h3>
+          <p>Planurile noastre îmi dau curajul să merg înainte. Nu există viitor mai frumos decât cel pe care îl clădim noi doi, pas cu pas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="newsletter">
+      <div class="newsletter">
+        <h2 class="section-title">Rămâi conectată la promoții (a se citi iubire)</h2>
+        <p>Primești notificări când adăugăm în stoc clipe noi de fericire.</p>
+        <form>
+          <input type="email" placeholder="Email-ul tău preferat" />
+          <button type="button">Abonează-te</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="testimonials">
+        <h2 class="section-title">Testimoniale (de la noi pentru noi)</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            E cea mai frumoasă achiziție pe care a făcut-o inima mea. Se potrivește perfect cu toate visele mele.
+          </div>
+          <div class="testimonial-card">
+            Dintre toate coșurile de cumpărături, acesta este singurul care rămâne plin de emoții adevărate.
+          </div>
+          <div class="testimonial-card">
+            Calitate premium: promisiuni respectate, zâmbete incluse și livrare rapidă direct în suflet.
+          </div>
+        </div>
       </div>
     </section>
   </div>
+
+  <div id="messagePopup" hidden></div>
 
   <script>
     const form = document.getElementById("loginForm");
     const loginContainer = document.getElementById("login");
     const contentContainer = document.getElementById("content");
     const errorMsg = document.getElementById("errorMsg");
+    const popup = document.getElementById("messagePopup");
     const VALID_EMAIL = "2ani4luni@aniversare.ro";
     const VALID_PASSWORD = "15iulie2023";
     const startDate = new Date("2023-07-15T00:00:00");
-
-    const yearsSpan = document.getElementById("years");
-    const monthsSpan = document.getElementById("months");
-    const daysSpan = document.getElementById("days");
 
     function updateCounter() {
       const now = new Date();
@@ -226,9 +339,26 @@
         months += 12;
       }
 
-      yearsSpan.textContent = `${years} ${years === 1 ? "an" : "ani"}`;
-      monthsSpan.textContent = `${months} ${months === 1 ? "lună" : "luni"}`;
-      daysSpan.textContent = `${days} ${days === 1 ? "zi" : "zile"}`;
+      document.getElementById("years").textContent = `${years} ${years === 1 ? "an" : "ani"}`;
+      document.getElementById("months").textContent = `${months} ${months === 1 ? "lună" : "luni"}`;
+      document.getElementById("days").textContent = `${days} ${days === 1 ? "zi" : "zile"}`;
+    }
+
+    function showPopup(message) {
+      popup.innerHTML = `
+        <div class="popup-backdrop">
+          <div class="popup-card">
+            <h3>Mesaj pentru tine</h3>
+            <p>${message}</p>
+            <button type="button" id="closePopup">Închide</button>
+          </div>
+        </div>`;
+      popup.hidden = false;
+
+      document.getElementById("closePopup").addEventListener("click", () => {
+        popup.hidden = true;
+        popup.innerHTML = "";
+      });
     }
 
     form.addEventListener("submit", (event) => {
@@ -242,6 +372,10 @@
         form.reset();
         errorMsg.textContent = "";
         updateCounter();
+
+        document.querySelectorAll(".show-message").forEach((btn) => {
+          btn.addEventListener("click", () => showPopup(btn.dataset.message));
+        });
       } else {
         errorMsg.textContent = "Ups! Email sau parolă greșită. Mai încearcă o dată.";
       }
