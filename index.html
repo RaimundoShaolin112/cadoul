@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aniversarea Noastră</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff0f6;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-wrapper,
+    .content-wrapper {
+      width: min(680px, 92vw);
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      padding: 2.5rem;
+    }
+    .login-wrapper h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #d6336c;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.95rem 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #ff4d6d;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    button:hover { background: #e63956; }
+    .error {
+      color: #d00000;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      min-height: 1.4rem;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #ffb3c6;
+      color: #fff;
+      border-radius: 16px 16px 0 0;
+    }
+    h1 { margin: 0; font-size: 2.5rem; }
+    section { padding: 2rem 1rem; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .letter {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+    .counter-card,
+    .love-message {
+      margin: 1.5rem auto;
+      padding: 1.5rem;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      background: #ffe3ec;
+      text-align: center;
+      max-width: 520px;
+    }
+    .counter-card h3,
+    .love-message h3 {
+      margin-top: 0;
+      color: #c9184a;
+      letter-spacing: 0.05em;
+    }
+    .counter-values {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #8a2846;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .counter-values span {
+      background: #fff;
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      min-width: 120px;
+    }
+    .love-message p {
+      margin: 0.6rem 0;
+      font-size: 1.05rem;
+    }
+    @media (max-width: 600px) {
+      .login-wrapper,
+      .content-wrapper { padding: 1.75rem; }
+      h1 { font-size: 2rem; }
+      .counter-values { flex-direction: column; }
+      .counter-values span { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrapper" id="login">
+    <h2>Bine ai venit ❤️</h2>
+    <form id="loginForm">
+      <label for="email">Email</label>
+      <input type="email" id="email" autocomplete="email" required placeholder="ex: 2ani4luni@aniversare.ro" />
+      <label for="password">Parola</label>
+      <input type="password" id="password" autocomplete="current-password" required placeholder="Parola secretă" />
+      <div class="error" id="errorMsg"></div>
+      <button type="submit">Intră pe pagina noastră</button>
+    </form>
+  </div>
+
+  <div class="content-wrapper" id="content" hidden>
+    <header>
+      <h1>La mulți ani, iubirea mea! ❤️</h1>
+    </header>
+
+    <section id="contor">
+      <div class="counter-card">
+        <h3>⏳ Timpul nostru împreună</h3>
+        <p>Din 15 iulie 2023 până acum:</p>
+        <div class="counter-values">
+          <span id="years">0 ani</span>
+          <span id="months">0 luni</span>
+          <span id="days">0 zile</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="mesaj">
+      <div class="love-message">
+        <h3>💗 Mesaj din inimă</h3>
+        <p>Ești începutul și sfârșitul fiecărei zile frumoase pentru mine.</p>
+        <p>Îți promit să păstrez mereu zâmbetele tale în siguranță și să te țin de mână în fiecare pas.</p>
+        <p>Cu tine, viitorul are deja gustul perfect: iubire, curaj și infinit.</p>
+      </div>
+    </section>
+
+    <section id="poze">
+      <h2>📸 Amintirile Noastre</h2>
+      <div class="gallery">
+        <img src="poza1.jpg" alt="Noi 1" />
+        <img src="poza2.jpg" alt="Noi 2" />
+        <img src="poza3.jpg" alt="Noi 3" />
+      </div>
+    </section>
+
+    <section id="scrisoare">
+      <h2>💌 Scrisoare pentru tine</h2>
+      <div class="letter">
+        <p>Iubirea mea,</p>
+        <p>Astăzi sărbătorim nu doar timpul petrecut împreună, ci tot ce am construit, toate momentele în care am râs, am visat și ne-am susținut reciproc. Ești cea mai frumoasă parte din viața mea și îți mulțumesc că îmi faci fiecare zi mai luminoasă.</p>
+        <p>Te iubesc mai mult decât pot spune în cuvinte și abia aștept tot ce urmează pentru noi.</p>
+        <p>Cu drag,<br>Eu ❤️</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const loginContainer = document.getElementById("login");
+    const contentContainer = document.getElementById("content");
+    const errorMsg = document.getElementById("errorMsg");
+    const VALID_EMAIL = "2ani4luni@aniversare.ro";
+    const VALID_PASSWORD = "15iulie2023";
+    const startDate = new Date("2023-07-15T00:00:00");
+
+    const yearsSpan = document.getElementById("years");
+    const monthsSpan = document.getElementById("months");
+    const daysSpan = document.getElementById("days");
+
+    function updateCounter() {
+      const now = new Date();
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+
+      if (days < 0) {
+        months -= 1;
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+      }
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
+
+      yearsSpan.textContent = `${years} ${years === 1 ? "an" : "ani"}`;
+      monthsSpan.textContent = `${months} ${months === 1 ? "lună" : "luni"}`;
+      daysSpan.textContent = `${days} ${days === 1 ? "zi" : "zile"}`;
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
+
+      if (email === VALID_EMAIL && password === VALID_PASSWORD) {
+        loginContainer.hidden = true;
+        contentContainer.hidden = false;
+        form.reset();
+        errorMsg.textContent = "";
+        updateCounter();
+      } else {
+        errorMsg.textContent = "Ups! Email sau parolă greșită. Mai încearcă o dată.";
+      }
+    });
+  </script>
+</body>
+</html>
